@@ -27,7 +27,6 @@ node {
   catch (err) {
     throw err
   }
-}
 
    stage("Image Prune"){
         imagePrune(CONTAINER_NAME)
