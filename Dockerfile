@@ -4,9 +4,6 @@ RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get -y install autoconf automake libtool nasm make pkg-config git apt-utils
 
-# Install yarn
-RUN npm install -g yarn
-
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -17,9 +14,9 @@ RUN node -v
 
 # Install app dependencies
 COPY package.json /usr/src/app/
-COPY yarn.lock /usr/src/app
+COPY package-lock.json /usr/src/app
 
-RUN yarn install
+RUN npm install
 
 # Bundle app source
 COPY . /usr/src/app
@@ -32,7 +29,7 @@ ENV NODE_ENV production
 ENV PORT 3000
 ENV PUBLIC_PATH "/"
 
-RUN yarn build
+RUN npm run start:build
 
 # Main command
-CMD [ "yarn", "start" ]
+CMD [ "npm", "run", "start:server" ]
