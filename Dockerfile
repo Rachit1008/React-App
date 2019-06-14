@@ -1,4 +1,4 @@
-FROM node:carbon
+FROM node:8.9-alpine
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -21,11 +21,10 @@ COPY . /usr/src/app
 EXPOSE 3000
 
 # Environment variables
-ENV NODE_ENV production
 ENV PORT 3000
 ENV PUBLIC_PATH "/"
 
 RUN npm run start:build
 
 # Main command
-CMD [ "npm", "run", "start:server" ]
+CMD [ "npm", "start" ]
