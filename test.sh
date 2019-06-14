@@ -2,6 +2,6 @@
 
 echo 'The following "npm" command tests your simple Node.js/React'
 echo 'application renders satisfactorily. This command actually invokes the test'
-echo 'runner Jest (https://facebook.github.io/jest/).'
+echo 'runner Jest (https://github.com/facebook/jest).'
 set -x
 npm test
